@@ -8,4 +8,5 @@ ENV DOCKER_CREDENTIAL_GCR_CONFIG=/kaniko/.config/gcloud/docker_credential_gcr_co
 ENV KANIKO_VERSION=$KANIKO_VERSION
 ENV SSL_CERT_DIR=/etc/ssl/certs
 ADD release/linux/amd64/kaniko-docker /kaniko/
+WORKDIR /workspace
 ENTRYPOINT ["/kaniko/kaniko-docker"]
