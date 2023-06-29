@@ -20,7 +20,8 @@ steps:
     auto_tag: true
     enable_cache: true
     registry: images.home.mtaylor.io
-    username: ""
+    username: anonymous
+    password: anonymous
 trigger:
   event:
   - custom
