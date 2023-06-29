@@ -19,7 +19,6 @@ steps:
     repo: images.home.mtaylor.io/drone-kaniko
     auto_tag: true
     enable_cache: true
-    registry: images.home.mtaylor.io
 trigger:
   event:
   - custom
