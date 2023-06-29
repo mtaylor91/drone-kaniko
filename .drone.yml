@@ -19,14 +19,7 @@ steps:
     repo: images.home.mtaylor.io/drone-kaniko
     auto_tag: true
     enable_cache: true
-    username:
-      from_secret: registry_username
-    password:
-      from_secret: registry_password
-    registry:
-      from_secret: registry_url
-image_pull_secrets:
-- dockerconfigjson
+    registry: images.home.mtaylor.io
 trigger:
   event:
   - custom
@@ -46,34 +39,8 @@ steps:
   - export tag=$(get-release-tag)
   - git tag $${tag}
   - git push origin $${tag}
-image_pull_secrets:
-- dockerconfigjson
 trigger:
   event:
   - promote
   target:
   - production
----
-kind: secret
-name: dockerconfigjson
-get:
-  path: image-pull-secret
-  name: .dockerconfigjson
----
-kind: secret
-name: registry_username
-get:
-  path: image-registry
-  name: username
----
-kind: secret
-name: registry_password
-get:
-  path: image-registry
-  name: password
----
-kind: secret
-name: registry_url
-get:
-  path: image-registry
-  name: url
